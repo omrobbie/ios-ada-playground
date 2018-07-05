@@ -299,7 +299,7 @@ func tempCheck(_ suhu:Int) -> String {
 let suhu = 28
 print("Suhu \(suhu) derajat celcius = \(tempCheck(suhu))")
 
-enum TempName {
+enum TempName: String {
     case Celcius, Farenheit, Kelvin
 }
 
@@ -334,5 +334,71 @@ func tempConversion(_ suhu:Float, _ awal:TempName, _ tujuan:TempName ) -> Float 
         }
     }
 }
-print(tempConversion(100, .Kelvin, .Celcius))
 
+var suhuAwal:Float = 100
+var tempAwal: TempName = .Kelvin
+var tempTujuan: TempName = .Celcius
+print()
+print("Aplikasi Konversi Suhu")
+print("Suhu awal      = \(suhuAwal) °\(tempAwal)")
+print("Hasil konversi = \(tempConversion(suhuAwal, tempAwal, tempTujuan)) °\(tempTujuan)")
+
+print()
+
+// struct
+
+struct Buku {
+    var judul: String
+    var penulis: String
+    var halaman: Int
+    var harga: Float
+    
+    func cetak() {
+        print("Buku favorit saya berjudul \(self.judul). Dikarang oleh \(self.penulis). Buku ini sepanjang \(self.halaman) halaman dan bisa didapat dengan harga $\(self.harga)")
+    }
+}
+
+let dataBuku = Buku(judul:"Don't make me think!", penulis:"Steve Krug", halaman:100, harga:29.95)
+dataBuku.cetak()
+
+print()
+
+// class
+
+class PerawatTempur {
+    var nama: String = ""
+    var health: Int = 100
+    var posisi: Int = 0
+
+    func gerakKiri() {
+        posisi -= 1
+        print("\(posisi) gerak kiri")
+    }
+    
+    func gerakKanan() {
+        posisi += 1
+        print("\(posisi) gerak kanan")
+    }
+    
+    func tertembak() {
+        health -= 5
+        print("\(health) tertembak")
+    }
+    
+    func marah() {
+        print("RESEK LU!")
+    }
+}
+
+let herkules = PerawatTempur()
+herkules.nama = "HERKULES"
+
+print("Health untuk pesawat \(herkules.nama): \(herkules.health)")
+
+herkules.gerakKanan()
+herkules.tertembak()
+herkules.gerakKiri()
+herkules.tertembak()
+herkules.marah()
+
+print("Health untuk pesawat \(herkules.nama): \(herkules.health)")
